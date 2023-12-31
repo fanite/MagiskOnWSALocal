@@ -111,13 +111,11 @@ jobs:
           ROOT_SOL: ${{ github.event.inputs.root_sol }}
         run: |
           ./scripts/install_deps.sh || exit 1
-          ./scripts/build.sh --arch ${ARCH} --release-type ${RELEASE_TYPE} --gapps-variant ${GAPPS_VARIANT} --root-sol ${ROOT_SOL}  --remove-amazon ${REMOVE_AMAZON}  --nofix-props
+          ./scripts/build.sh --arch ${ARCH} --release-type ${RELEASE_TYPE} --gapps-variant ${GAPPS_VARIANT} --root-sol ${ROOT_SOL} --remove-amazon ${REMOVE_AMAZON} --compress-format --nofix-props
           path=$(find ./output -name "*.7z"|head -n 1)
-          echo $path
           # echo "path=${path}" >> $GITHUB_OUTPUT
           # echo "name=$(basename $path)" >> $GITHUB_OUTPUT
           echo "status=success" >> $GITHUB_OUTPUT
-          ls -al .
       
       - name: upload artifact
         uses: actions/upload-artifact@main
