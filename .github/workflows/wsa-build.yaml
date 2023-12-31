@@ -116,7 +116,7 @@ jobs:
           echo "##[set-output name=path;]$path"
           echo "path=${path}" >> $GITHUB_OUTPUT
           echo "name=$(basename $path)" >> $GITHUB_OUTPUT
-          echo "status=status" >> $GITHUB_OUTPUT
+          echo "status=success" >> $GITHUB_OUTPUT
           ls -al .
       
       - name: upload artifact
